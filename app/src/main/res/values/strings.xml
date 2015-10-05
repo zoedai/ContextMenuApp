@@ -1,8 +1,11 @@
 <resources>
     <string name="menu_edit">Edit</string>
-    <string name="menu_share">Share with ...</string>
+    <string name="menu_share">Share via ...</string>
+    <string name="menu_fb">Facebook</string>
+    <string name="menu_li">LinkedIn</string>
     <string name="menu_del">Delete</string>
     <string name="app_name">ContextMenuApp</string>
     <string name="action_settings">Settings</string>
+
 
 </resources>

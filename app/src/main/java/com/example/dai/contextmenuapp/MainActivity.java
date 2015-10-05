@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int MENU_EDIT = Menu.FIRST;
     private static final int MENU_SHARE = Menu.FIRST + 1;
     private static final int MENU_DEL = Menu.FIRST + 2;
+    private static final int MENU_FB = Menu.FIRST + 3;
+    private static final int MENU_LI = Menu.FIRST + 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         int groupId = 0;
-        menu.add(groupId, MENU_EDIT, 0, R.string.menu_edit);
-        menu.add(groupId, MENU_SHARE,1, R.string.menu_share);
-        menu.add(groupId, MENU_DEL, 2, R.string.menu_del);
+        menu.add(groupId, MENU_EDIT, Menu.NONE, R.string.menu_edit);
+        menu.add(groupId, MENU_DEL, Menu.NONE, R.string.menu_del);
+
+        SubMenu subMenu = menu.addSubMenu(groupId, MENU_SHARE, Menu.NONE, R.string.menu_share);
+
+        subMenu.add(1, MENU_FB, Menu.NONE, R.string.menu_fb);
+        subMenu.add(1, MENU_LI, Menu.NONE, R.string.menu_li);
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_context, menu);
 
