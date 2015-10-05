@@ -1,5 +1,7 @@
 package com.example.dai.contextmenuapp;
 
+import android.content.ClipData;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import static android.view.View.*;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tv;
@@ -31,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         tv = (TextView) findViewById(R.id.textView);
         registerForContextMenu(tv);
+
+
+
     }
 
     @Override
@@ -50,7 +60,30 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_context, menu);
 
 
+
     }
+
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_DEL:
+                Toast.makeText(getApplicationContext(), "Delete OK", Toast.LENGTH_SHORT).show();
+                return true;
+            case MENU_EDIT:
+                Toast.makeText(getApplicationContext(), "Edit OK", Toast.LENGTH_SHORT).show();
+                return true;
+            case MENU_FB:
+                Toast.makeText(getApplicationContext(), "Sharing via facebook", Toast.LENGTH_SHORT).show();
+                return true;
+            case MENU_LI:
+                Toast.makeText(getApplicationContext(), "Sharing via LinkedIn", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return true;
+        }
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if (id == R.id.sub_del) {
+            Toast.makeText(getApplicationContext(), "Delete OK", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.sub_edit) {
+            Toast.makeText(getApplicationContext(), "Edit OK", Toast.LENGTH_SHORT).show();
             return true;
         }
 
